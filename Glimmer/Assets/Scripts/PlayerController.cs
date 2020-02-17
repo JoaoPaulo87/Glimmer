@@ -38,12 +38,16 @@ public class PlayerController : MonoBehaviour
 
         this.playerRB.AddForce(movement * speed);
 
+        PlayerMoveEffect(moveHorizontal, moveVertical);
+    }
 
+    public void PlayerMoveEffect(float moveHorizontal, float moveVertical)
+    {
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             this.isMoving = true;
 
-            if (this.light.range < 3)
+            if (this.light.range < 2)
             {
                 this.light.intensity += 0.2f * Time.timeScale;
                 this.light.range += 0.1f * Time.timeScale;
@@ -55,15 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             this.light.intensity -= 0.15f * Time.timeScale;
             this.light.range -= 0.15f * Time.timeScale;
-        }
-    }
-
-    public void PlayerMoveEffect(float playerDirection)
-    {
-        if (this.light != null)
-        {
-            this.light.intensity = Mathf.Abs(playerDirection) * 5;
-            this.light.range = Mathf.Abs(playerDirection) * 5;
         }
     }
 }
