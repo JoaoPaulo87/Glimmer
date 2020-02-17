@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     {
         PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
 
-        if(playerController != null)
+        if (playerController != null)
         {
             Debug.Log("You lose");
             playerController.SetSpeed(0.0f);
