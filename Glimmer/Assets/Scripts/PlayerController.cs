@@ -9,14 +9,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     private Light light;
     private bool isMoving;
-    private SphereCollider sphereCollider;
 
     void Start()
     {
         this.playerRB = gameObject.GetComponent<Rigidbody>();
         this.light = gameObject.GetComponent<Light>();
         this.isMoving = false;
-        this.sphereCollider = gameObject.GetComponent<SphereCollider>();
     }
 
     void FixedUpdate()
