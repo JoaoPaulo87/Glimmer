@@ -17,14 +17,29 @@ public class DetectionAura : MonoBehaviour
 
     private void Update()
     {
-        if(this.movementController != null)
+        if (this.movementController != null)
         {
             Vector3 movementVector = this.movementController.GetMovementVector();
-            this.UpdateAura(movementVector.magnitude);
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                this.CrouchAura(movementVector.magnitude);
+            }
+            else
+            {
+                this.UpdateAura(movementVector.magnitude);
+            }
         }
     }
 
     public void UpdateAura(float movementMagnitude)
+    {
+        this.playerCollider.radius = movementMagnitude * 2;
+        this.light.range = movementMagnitude * 2;
+        this.light.intensity = movementMagnitude * 20;
+    }
+
+    public void CrouchAura(float movementMagnitude)
     {
         this.playerCollider.radius = movementMagnitude;
         this.light.range = movementMagnitude;

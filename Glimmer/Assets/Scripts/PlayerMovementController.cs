@@ -17,7 +17,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         this.MovePlayer();
     }
-    
+
     public Vector3 GetMovementVector()
     {
         return this.movementVector;
@@ -25,8 +25,20 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MovePlayer()
     {
-        this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            this.playerRigidbody.AddForce(this.movementVector * this.SetSpeed(2));
+        }
+        else
+        {
+            this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            this.playerRigidbody.AddForce(this.movementVector * this.SetSpeed(12));
+        }
+    }
 
-        this.playerRigidbody.AddForce(this.movementVector * this.speed);
+    private float SetSpeed(float playerSpeed)
+    {
+        return this.speed = playerSpeed;
     }
 }
