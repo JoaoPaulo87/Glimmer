@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    DetectionAura playerController = other.gameObject.GetComponent<DetectionAura>();
+    private void OnTriggerEnter(Collider other)
+    {
+        DetectionAura playerController = other.gameObject.GetComponent<DetectionAura>();
 
-    //    if (playerController != null)
-    //    {
-    //        Debug.Log("You lose");
-    //        //playerController.SetSpeed(0.0f);
-    //        other.attachedRigidbody.drag = 100;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Null Reference PlayerController");
-    //    }
-    //}
+        if (playerController != null)
+        {
+            Debug.Log("Looooose");
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Debug.LogError("Null Reference PlayerController");
+        }
+    }
 }
