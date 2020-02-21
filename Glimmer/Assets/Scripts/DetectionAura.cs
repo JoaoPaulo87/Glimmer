@@ -25,6 +25,10 @@ public class DetectionAura : MonoBehaviour
             {
                 this.CrouchAura(movementVector.magnitude);
             }
+            else if(Input.GetKey(KeyCode.Space))
+            {
+                this.RunAura(movementVector.magnitude);
+            }
             else
             {
                 this.UpdateAura(movementVector.magnitude);
@@ -32,11 +36,18 @@ public class DetectionAura : MonoBehaviour
         }
     }
 
+    public void RunAura(float movementMagnitude)
+    {
+        this.playerCollider.radius = movementMagnitude * 3;
+        this.light.range = movementMagnitude * 3;
+        this.light.intensity = movementMagnitude * 12;
+    }
+
     public void UpdateAura(float movementMagnitude)
     {
         this.playerCollider.radius = movementMagnitude * 2;
         this.light.range = movementMagnitude * 2;
-        this.light.intensity = movementMagnitude * 20;
+        this.light.intensity = movementMagnitude * 10;
     }
 
     public void CrouchAura(float movementMagnitude)

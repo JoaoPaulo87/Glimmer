@@ -27,18 +27,26 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            this.playerRigidbody.AddForce(this.movementVector * this.SetSpeed(2));
+            this.ChangePlayerMovement(2);
         }
-        else
+        else if(Input.GetKey(KeyCode.Space))
         {
-            this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            this.playerRigidbody.AddForce(this.movementVector * this.SetSpeed(12));
+            this.ChangePlayerMovement(15);
+        }
+        else 
+        {
+            this.ChangePlayerMovement(12);
         }
     }
 
     private float SetSpeed(float playerSpeed)
     {
         return this.speed = playerSpeed;
+    }
+
+    private void ChangePlayerMovement(float playerSpeed)
+    {
+        this.movementVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        this.playerRigidbody.AddForce(this.movementVector * this.SetSpeed(playerSpeed));
     }
 }

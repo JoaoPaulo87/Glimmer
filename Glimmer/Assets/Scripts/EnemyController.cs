@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 
         if (playerController != null)
         {
-            Debug.Log("Looooose");
+            Debug.Log("Loooooser ^_^");
             Time.timeScale = 0f;
         }
         else
